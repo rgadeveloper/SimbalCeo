@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <p:panelGrid columns="2" id ="gridMunicipio" rendered="true"  style="margin-top:20px; font-size: 12px ">
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="8">Balances por periodo </p:column>
+            </p:row>
+        </f:facet>
+        
+          <h:outputText style="font-weight: bold;" value="Periodo" />
+          <h:outputText value="#{sGeograficaView.balance.SBalancesPK.periodo}" />
+          
+          <h:outputText rendered="#{sGeograficaView.idBarCir !='no'}" style="font-weight: bold;" value="ID" />
+          <h:outputText rendered="#{sGeograficaView.idBarCir !='no'}" value="#{sGeograficaView.idBarCir}" />
+          
+          <h:outputText style="font-weight: bold;" value="Cantidad Trafos en Municipio" />
+          <h:outputText value="#{sGeograficaView.balance.totalMacros}" />
+          
+          <h:outputText style="font-weight: bold;" value="Cantidad de Macros Funcionando" />
+          <h:outputText value="#{sGeograficaView.balance.totalMacrosFunc}" />
+        
+          <h:outputText style="font-weight: bold;" value="% Macro-medición" />
+          <h:outputText value="#{sGeograficaView.balance.porcPerdidaMes}" />
+        
+          <h:outputText style="font-weight: bold;" value="Cantidad de Suministros Macro-medidos" />
+          <h:outputText value="#{sGeograficaView.balance.cantSumFact}" />
+            
+          <h:outputText style="font-weight: bold;" value="Perdidas Macro-medidores Funcionando" />
+          <h:outputText value="#{sGeograficaView.balance.balEnergiaSum}" />
+          
+          <h:outputText style="font-weight: bold;" value="Cantidad de Macros no Funcionando" />
+          <h:outputText value="#{sGeograficaView.balance.cantMacrosNoFunc}" />
+           
+               
+          </p:panelGrid>
+
+    <p:panelGrid id ="dtbalance" rendered="true"  style="margin-top:20px; font-size: 12px ">
+
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="8">Información de Macro-medición por rangos </p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Negativos
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{sGeograficaView.dataRangosBalance.negativos}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Inconsistentes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{sGeograficaView.dataRangosBalance.inconsistentes}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Bajo
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{sGeograficaView.dataRangosBalance.bajo}" />
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Sin Balances &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Medio
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{sGeograficaView.dataRangosBalance.medio}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Critico
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{sGeograficaView.dataRangosBalance.critico}" />
+            </p:column>
+        </p:row>
+    </p:panelGrid>
+    
+</html>

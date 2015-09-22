@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <p:panelGrid columns="2" id ="gridMunicipio" rendered="true"  style="margin-top:20px; font-size: 12px ">
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="8">Balances por periodo </p:column>
+            </p:row>
+        </f:facet>
+        
+        <h:outputText style="font-weight: bold;" value="Periodo" />
+        <h:outputText value="#{electricaView.balance.balancesPK.periodo}" />
+        
+        <h:outputText rendered="#{!electricaView.idBarCir.equals('no')}"  style="font-weight: bold;" value="ID Circuito (en SIMBAL)" />
+        <h:outputText rendered="#{!electricaView.idBarCir.equals('no')}" value="#{electricaView.idBarCir}" />
+                
+        <h:outputText style="font-weight: bold;" value="Cantidad Trafos en Municipio (Und)" />
+        <h:outputText value="#{electricaView.balance.totalMacros}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Cantidad de Macros Funcionando (Und)" />
+        <h:outputText value="#{electricaView.balance.totalMacrosFunc}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Macro-medición (%)" />
+        <h:outputText value="#{electricaView.balance.porcPerdidaMes}" >
+            <f:convertNumber integerOnly="true" pattern="#.###"/>
+        </h:outputText>      
+
+        <h:outputText style="font-weight: bold;" value="Cantidad de Suministros Macro-medidos (und)" />
+        <h:outputText value="#{electricaView.balance.cantSumFact}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Perdidas Macro-medidores Funcionando (Kwh)" />
+        <h:outputText value="#{electricaView.balance.balEnergiaSum}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Cantidad de Macros no Funcionando (Und)" />
+        <h:outputText value="#{electricaView.balance.cantMacrosNoFunc}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+        
+        <h:outputText style="font-weight: bold;" value="Consumo Suministros (Kwh)" />
+        <h:outputText value="#{electricaView.balance.consumoSuministro}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+        
+        <h:outputText style="font-weight: bold;" value="Consumo Adicional (Kwh)" />
+        <h:outputText value="#{electricaView.balance.consumoAdicional}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>  
+
+
+    </p:panelGrid>
+
+    <p:panelGrid id ="dtbalance" rendered="true"  style="margin-top:20px; font-size: 12px ">
+
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="8">Información de Macro-medición por rangos </p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Negativos
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{electricaView.dataRangosBalance.negativos}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Inconsistentes
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{electricaView.dataRangosBalance.inconsistentes}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Bajo
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{electricaView.dataRangosBalance.bajo}" />
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Sin Balances
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{electricaView.dataRangosBalance.sinBalance}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Medio
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{electricaView.dataRangosBalance.medio}" />
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                Cantidad Macros Critico
+            </p:column>
+            <p:column style="font-weight: bold;" colspan="1">
+                <h:outputText value="#{electricaView.dataRangosBalance.critico}" />
+            </p:column>
+        </p:row>
+    </p:panelGrid>
+
+    <h:panelGrid columns="2">
+        <h:commandButton image="../resources/images/pdf.png" actionListener="#{electricaView.exportar('MunBarCir','pdf')}" />
+        <h:commandButton image="../resources/images/excel.png" actionListener="#{electricaView.exportar('MunBarCir','xls')}" />
+    </h:panelGrid> 
+
+</html>

@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <p:panelGrid columns="2" id ="dtbalanceTrafo"   style="margin-top:15px; font-size: 12px ">
+
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="8">Información del Transformador </p:column>
+            </p:row>
+        </f:facet>
+
+        <h:outputText style="font-weight: bold;" value="Id del Macro" />
+        <h:outputText value="#{electricaView.componenteMedida.idComercial}" />
+
+        <h:outputText style="font-weight: bold;" value="Id del Transformador" />
+        <h:outputText value="#{electricaView.componente.idCliente}" />
+
+        <h:outputText style="font-weight: bold;" value="Coordenada X" />
+        <h:outputText value="#{electricaView.componente.coordX}" />
+
+        <h:outputText style="font-weight: bold;" value="Coordenada Y" />
+        <h:outputText value="#{electricaView.componente.coordY}" />
+
+        <h:outputText style="font-weight: bold;" value="Zona" />
+        <h:outputText value="#{electricaView.relacionGeo.nombrePadre}" />
+
+        <h:outputText style="font-weight: bold;" value="Municipio" />
+        <h:outputText value="#{electricaView.relacionGeo.nombreHijo}" />
+
+        <h:outputText style="font-weight: bold;" value="Subestacion" />
+        <h:outputText value="#{electricaView.relacionElec.nombrePadre}" />
+
+        <h:outputText style="font-weight: bold;" value="Circuito" />
+        <h:outputText value="#{electricaView.relacionElec.nombreHijo}" />
+
+        <h:outputText style="font-weight: bold;" value="Capacidad de Transformador (KVA)" />
+        <h:outputText value="#{electricaView.atrComponente.cargaInstalada}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Ciclo" />
+        <h:outputText value="#{electricaView.atrComponente.ciclo.descripcion}" />
+
+        <h:outputText style="font-weight: bold;" value="Direccion" />
+        <h:outputText value="#{electricaView.componente.direccion}" />
+
+        <h:outputText style="font-weight: bold;" value="Tipo de Red" />
+        <h:outputText value="#{electricaView.atrComponente.tbltipo1.nombre}" />
+
+        <h:outputText style="font-weight: bold;" value="Tipo de Macromedidor" />
+        <h:outputText value="#{electricaView.componenteMedida.tbltipo.nombre}" />
+
+        <h:outputText style="font-weight: bold;" value="Factor multiplicador" />
+        <h:outputText value="#{electricaView.atrComponenteMedida.constante}" />
+
+        <h:outputText style="font-weight: bold;" value="Tipo Medidor" />
+        <h:outputText value="#{electricaView.atrComponente.tbltipo5.nombre}" />
+
+        <h:outputText style="font-weight: bold;" value="Medidor" />
+        <h:outputText value="#{electricaView.atrComponente.medidor}" /> 
+
+        <h:outputText style="font-weight: bold;" value="Lectura anterior" />
+        <h:outputText value="#{electricaView.medida.lecturaAnterior}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Lectura Actual" />
+        <h:outputText value="#{electricaView.medida.lecturaActual}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText> 
+        
+        <h:outputText style="font-weight: bold;" value="Fecha de Instalación" />
+        <h:outputText value="#{electricaView.atrComponente.fechaInstalacion}" > 
+            <f:convertDateTime dateStyle="short" />
+        </h:outputText> 
+
+        <h:outputText style="font-weight: bold;" value="Fecha lectura anterior" />
+        <h:outputText value="#{electricaView.medida.fechaLecturaAnterior}" >
+            <f:convertDateTime dateStyle="short" />
+        </h:outputText> 
+
+        <h:outputText style="font-weight: bold;" value="Fecha lectura actual" />
+        <h:outputText value="#{electricaView.medida.fechaLecturaActual}" >
+            <f:convertDateTime dateStyle="short" />
+        </h:outputText> 
+        
+        <h:outputText style="font-weight: bold;" value="Energia Perdida Macromedidor(Kwh)" />
+        <h:outputText value="#{electricaView.balance.balEnergiaSum}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>
+
+        <h:outputText style="font-weight: bold;" value="Energia carga Extra (Kwh)" />
+        <h:outputText value="#{electricaView.medida.consumoAdicional}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Perdida Energia Mes (%)" />
+        <h:outputText value="#{electricaView.balance.porcPerdidaMes}" >
+            <f:convertNumber integerOnly="true" pattern="#.###"/>
+        </h:outputText>      
+
+        <h:outputText style="font-weight: bold;" value="Perdida Energia Movil (%)" />
+        <h:outputText value="#{electricaView.balance.porcPerdidaMovil}" >
+            <f:convertNumber integerOnly="true" pattern="#.###"/>
+        </h:outputText>      
+
+        <h:outputText style="font-weight: bold;" value="Rango de perdida" />
+        <h:outputText value="#{electricaView.balance.rangoClasificacion.descripcion}" />
+
+        <h:outputText style="font-weight: bold;" value="Ruta" />
+        <h:outputText value="#{electricaView.atrComponente.ruta}" />
+
+        <h:outputText style="font-weight: bold;" value="Anomalia de lectura" />
+        <h:outputText value="#{electricaView.medida.tbltipo.nombre}" />
+
+        <h:outputText style="font-weight: bold;" value="Clientes sin medida (Und)" />
+        <h:outputText value="#{electricaView.cantSumNoMedidos}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>   
+
+        <h:outputText style="font-weight: bold;" value="Energia Macromedidor (Kwh)" />
+        <h:outputText value="#{electricaView.balance.consumoMacros}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>         
+
+        <h:outputText style="font-weight: bold;" value="Motivo de no Balance" />
+        <h:outputText value="#{electricaView.balance.tbltipo.nombre}" />
+
+        <h:outputText style="font-weight: bold;" value="Estado del Balance" />
+        <h:outputText value="#{electricaView.balance.tbltipo.nombre}" />
+        
+        <h:outputText style="font-weight: bold;" value="Cantidad de Suministros (Und)" />
+        <h:outputText value="#{electricaView.balance.cantSuministrosTotal}" >
+            <f:convertNumber integerOnly="true" pattern="#,###"/>
+        </h:outputText>    
+
+    </p:panelGrid>
+
+    <p:dialog id="dgTipoUso" header="Cantidades Suministro por Tipo de Uso" widgetVar="dlgTipoUso">  
+        <p:dataTable var="tu" value="#{electricaView.listCantXTipoUso}">  
+            <p:column headerText="Tipo de Uso">  
+                <h:outputText value="#{tu.nombre}" />  
+            </p:column>  
+
+            <p:column headerText="Cantidad de Suministros">  
+                <h:outputText value="#{tu.valor}" />  
+            </p:column>         
+        </p:dataTable> 
+    </p:dialog> 
+
+    <h:panelGrid columns="2">
+        <h:commandButton image="../resources/images/pdf.png" actionListener="#{electricaView.exportar('Trafo','pdf')}" />  
+        <h:commandButton image="../resources/images/excel.png" actionListener="#{electricaView.exportar('Trafo','xls')}" />
+    </h:panelGrid> 
+
+</html>
